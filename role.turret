@@ -1,0 +1,21 @@
+ var tower = Game.getObjectById('fa7a101ed8ac07b4a7d53992');
+   
+    if(tower) {
+       
+        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (structure) => structure.hits < structure.hitsMax
+        });
+       
+        if(closestDamagedStructure) { //repair closest damageged structure 
+            tower.repair(closestDamagedStructure);
+        }
+
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS); //find closest hostile 
+       
+        if(closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }
+module.exports = {
+
+};
